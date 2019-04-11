@@ -1,0 +1,6 @@
+services:
+  ice.consumer_create:
+    class: Drupal\ice\Command\CreateCommand
+    arguments: ['@database', '@entity_type.manager', '@console.drupal_api']
+    tags:
+      - { name: drupal.command }

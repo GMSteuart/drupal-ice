@@ -1,0 +1,8 @@
+description: 'Create a Consumer'
+options: {}
+arguments:
+  label: "Consumer label"
+  uid: "User ID"
+  owner: "Scope"
+messages:
+  success: 'Consumer created!'
