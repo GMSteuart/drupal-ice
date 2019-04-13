@@ -1,5 +1,7 @@
-name: 'ice'
+name: Ice
+description: Ice module
+package: Custom
+
 type: module
-description: 'Ice module'
 core: 8.x
-package: 'Custom'
+

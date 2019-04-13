@@ -9,6 +9,5 @@
   "support": {
     "issues": "https://www.drupal.org/project/issues/ice",
     "source": "http://cgit.drupalcode.org/ice"
-  },
-  "require": { }
+  }
 }
