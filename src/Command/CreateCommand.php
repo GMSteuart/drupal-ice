@@ -67,17 +67,15 @@ class CreateCommand extends ContainerAwareCommand {
         InputArgument::REQUIRED,
         $this->trans('commands.user.create.options.label')
       )
-      ->addOption(
+      ->addArgument(
         'uid',
-        null,
-        InputArgument::OPTIONAL,
+        InputArgument::REQUIRED,
         $this->trans('commands.user.create.options.uid')
       )
-      ->addOption(
-        'owner',
-        null,
-        InputArgument::OPTIONAL,
-        $this->trans('commands.user.create.options.owner')
+      ->addArgument(
+        'role',
+        InputArgument::REQUIRED,
+        $this->trans('commands.user.create.options.role')
       );
   }
 
@@ -86,11 +84,13 @@ class CreateCommand extends ContainerAwareCommand {
    */
   protected function execute(InputInterface $input, OutputInterface $output) {
     $label = $input->getArgument('label');
-    $owner = $input->getOption('owner');
+    $uid = $input->getArgument('uid');
+    $role = $input->getArgument('role');
 
     $consumer = $this->createConsumer(
       $label,
-      $owner
+      $uid,
+      $role
     );
 
     if ($consumer['success']) {
@@ -111,23 +111,14 @@ class CreateCommand extends ContainerAwareCommand {
     }
   }
 
-  private function createConsumer($label, $owner = null) {
-    // $consumer = new Consumer([
-    //   'label' => $label,
-    //   'user_id' => 24, // user to link to
-    //   'third_party' => false,
-    //   'roles' => "nuxt"
-    // ], "consumer");
-    // dump($consumer->getFieldDefinitions());
-    // exit;
+  private function createConsumer($label, $uid, $role = null) {
     // TODO implement third_party, description,
-    // TODO make uid a passable parameter
     // TODO allow for uid to be a string => username or integer => uid
     $consumer = Consumer::create([
       'label' => $label,
-      'user_id' => 24, // user to link to
+      'user_id' => $uid, // user to link to
       'third_party' => false,
-      'roles' => "nuxt"
+      'roles' => $role
     ]);
 
     $result = [];
