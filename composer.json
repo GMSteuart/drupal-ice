@@ -2,7 +2,15 @@
   "name": "gmsteuart/drupal-ice",
   "type": "drupal-module",
   "description": "Ice module",
-  "keywords": ["Drupal"],
+  "keywords": [
+    "Drupal"
+  ],
+  "authors": [
+    {
+      "name": "Grant Steuart",
+      "email": "gmsteuart@gmail.com"
+    }
+  ],
   "license": "GPL-2.0+",
   "homepage": "https://www.drupal.org/project/ice",
   "minimum-stability": "dev",
